@@ -1,21 +1,19 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        left_start = 0
-        right_start = len(height)-1
+        current_vol = 0
+        max_pos = height[0]
 
         for i in range(len(height)):
-            if height[i] == 0:
-                left_start+=1
-                continue
-            break
-        for i in range(right_start-1, -1, -1):
-            if height[i] == 0:
-                right_start-=1
-                continue
-            break
+            if height[i] > max_pos:
+                max_pos = height[i]
 
-        current_volume = 0
+        left_pointer = max_pos-1
+        right_pointer = max_pos+1
 
-        for i in range(left_start, len(height)):
+        right_max = max_pos
+        while left_pointer >= 0:
+            if height[right_max] == height[left_pointer]:
+                left_pointer -= 1
+                right_max -= 1
             
-        for i in range(right_start, -1, -1):
+            
