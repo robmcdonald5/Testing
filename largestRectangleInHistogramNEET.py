@@ -1,11 +1,17 @@
 class Solution:
-    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        pair = [[p, s] for p, s in zip(position, speed)]
+    def largestRectangleArea(self, heights: List[int]) -> int:
         stack = []
-        
-        for p, s in sorted(pair)[::-1]:
-            stack.append((target - p) / s)
-            if len(stack) >= 2 and stack[-1] <= stack[-2]:
-                stack.pop()
-        
-        return len(stack)
+        maxArea = 0
+
+        for i, h in enumerate(heights):
+            start = i
+            while stack and stack[-1][1] > h:
+                index, height = stack.pop()
+                maxArea = max(maxArea, height * (i - index))
+                start = index
+            stack.append((start, h))
+
+        for i, h in stack:
+            maxArea = max(maxArea, h * (len(heights) - i))
+
+        return maxArea
