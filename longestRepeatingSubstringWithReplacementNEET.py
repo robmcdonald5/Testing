@@ -7,7 +7,7 @@ class Solution:
             count[s[r]] = 1 + count.get(s[r], 0)
 
             while (r - l + 1) - max(count.values()) > k:
-                count[s[1]] -= 1
+                count[s[l]] -= 1
                 l += 1
 
             res = max(res, r - l + 1)
