@@ -1,0 +1,11 @@
+name: e7
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  ok:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 20 && echo ok
