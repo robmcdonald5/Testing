@@ -1,0 +1,10 @@
+name: e3-forge
+on:
+  pull_request:
+    branches: [e3-protected]
+jobs:
+  forge:
+    name: hub/approved
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "a workflow job that borrows the name of the required check"
